@@ -10,7 +10,6 @@ public class Main extends Application{
     public static void main(String[] args){
         launch(args);
     }
-    Button button = new Button();
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Movie Search");
