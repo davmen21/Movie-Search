@@ -13,16 +13,16 @@ public class Search {
    @param String title
    @return String movieData
    */
-   public static String searchByTitle(String title) throws IOException
+   public static Movies searchByTitle(String title) throws IOException
    {
       URL url = new URL("https://www.omdbapi.com/?t=" + title + "&apikey=" + APIKEY);
       Scanner s = new Scanner(url.openStream());
       String movieData = s.nextLine();
       
       Gson gson = new Gson();
-      Movies newMovie = gson.fromJson(movieData, Movies.class);
+      Movies movie = gson.fromJson(movieData, Movies.class);
       
-      return newMovie.Title;
+      return movie;
     }
     
     public static String searchById(String id) throws IOException
