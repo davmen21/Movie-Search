@@ -15,12 +15,12 @@ public class Search {
    */
    public static Movies searchByTitle(String title) throws IOException
    {
-      URL url = new URL("https://www.omdbapi.com/?t=" + title + "&apikey=" + APIKEY);
+      URL url = new URL("https://www.omdbapi.com/?t=" + title + "&apikey=" + APIKEY); //API Call
       Scanner s = new Scanner(url.openStream());
       String movieData = s.nextLine();
       
       Gson gson = new Gson();
-      Movies movie = gson.fromJson(movieData, Movies.class);
+      Movies movie = gson.fromJson(movieData, Movies.class); //Create movie object from Json
       
       return movie;
     }
@@ -30,7 +30,10 @@ public class Search {
       URL url = new URL("https://www.omdbapi.com/?i=" + id + "&apikey=" + APIKEY);
       Scanner s = new Scanner(url.openStream());
       String rawData = s.nextLine();
-      System.out.println(rawData);
-      return rawData;
+            
+      Gson gson = new Gson();
+      Movies movie = gson.fromJson(movieData, Movies.class);
+      
+      return movie;
     }
 }
