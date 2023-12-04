@@ -25,11 +25,11 @@ public class Search {
       return movie;
     }
     
-    public static String searchById(String id) throws IOException
+    public static Movies searchById(String id) throws IOException
     {
       URL url = new URL("https://www.omdbapi.com/?i=" + id + "&apikey=" + APIKEY);
       Scanner s = new Scanner(url.openStream());
-      String rawData = s.nextLine();
+      String movieData = s.nextLine();
             
       Gson gson = new Gson();
       Movies movie = gson.fromJson(movieData, Movies.class);

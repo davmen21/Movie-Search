@@ -28,8 +28,8 @@ public class Controller{
    @FXML
    void handleButton(ActionEvent event) throws IOException{
       input = searchInput.getText();
-      String title = Search.searchByTitle(input);
-      System.out.print(title);
+      //String title = Search.searchByTitle(input);
+      //System.out.print(title);
    }
     
     
