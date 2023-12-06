@@ -38,6 +38,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -53,9 +55,17 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <TabPane layoutY="143.0" prefHeight="236.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" layoutY="143.0" prefHeight="236.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Search Results" />
+                <Tab fx:id="resultsTab" text="Search Results">
+                     <content>
+                        <TableView fx:id="resultsTable" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
+                              <TableColumn fx:id="plotColumn" prefWidth="75.0" text="Plot" />
+                          </columns>
+                        </TableView>
+                     </content></Tab>
                 <Tab text="Watchlist">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
