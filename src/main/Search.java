@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Search {
-   static String APIKEY = "d9781dca";
+   static String APIKEY = System.getenv("APIKEY");
 
    /**searchByTitle method
    @param String title

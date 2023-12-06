@@ -35,7 +35,11 @@ public class Controller{
     
     @FXML
     private TableView resultsTable;
+    
+    @FXML
     private TableColumn titleColumn;
+    
+    @FXML
     private TableColumn plotColumn;
     
     String input;
