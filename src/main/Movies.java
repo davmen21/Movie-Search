@@ -1,9 +1,19 @@
-//Movies class test
+//Movies class
 //Holds json data from search
 
 public class Movies {
 
-   public String Title;
-   public String Plot;
+   private String Title;
+   private String Plot;
+   
+   public String getTitle()
+   {
+      return this.Title;
+   }
+   
+   public String getPlot()
+   {
+      return this.Plot;
+   }
 
 }
