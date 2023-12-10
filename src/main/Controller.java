@@ -111,6 +111,10 @@ public class Controller implements Initializable{
    //Sort MenuItem action events
    @FXML
    void sortAZ(ActionEvent event) {
+   
+      //movies.sort(Comparator.comparing(Movie :: getTitle));
+      
+      //resultsTable.setItems(movies); 
       return;
    }
    @FXML
@@ -125,6 +129,7 @@ public class Controller implements Initializable{
    //Add to watchlist button handler
    @FXML
    void addToWatchlist(ActionEvent event){
+      
       
    
    }
