@@ -70,11 +70,6 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab text="Top 10">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
               </tabs>
             </TabPane>
             <TextField fx:id="searchInput" layoutX="230.0" layoutY="95.0" promptText="Search" />
@@ -87,6 +82,7 @@
               </items>
             </MenuButton>
             <Button fx:id="viewToggle" layoutX="550.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeViewMode" text="Dark Mode" />
+            <Button fx:id="addToWatchlistButton" disable="true" layoutX="431.0" layoutY="95.0" mnemonicParsing="false" onAction="#addToWatchlist" text="Add to Watchlist" />
       </children>
     </AnchorPane>
   </children>
