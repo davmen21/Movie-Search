@@ -17,7 +17,6 @@ public class Movies {
    private String Title;
    private String Plot;
    private String imdbID;
-   private boolean inWatchlist;
    
    /**Method getTitle: gets movie title
    @return Title; String value of movie title
@@ -42,11 +41,6 @@ public class Movies {
    {
       return this.imdbID;
    }
-   
-   
-   public boolean getInWatchlist()
-   {
-      return this.inWatchlist;
-   }
+
 
 }

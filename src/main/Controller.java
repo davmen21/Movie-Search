@@ -86,16 +86,16 @@ public class Controller implements Initializable{
     private Button addToWatchlistButton; //Add to watchlist button
     
     @FXML
-    private TableView<Movies> watchlistTable;
+    private TableView<Movies> watchlistTable; //Watchlist table
     
     @FXML
-    private TableColumn watchlistTitleColumn;
+    private TableColumn watchlistTitleColumn; //Watchlist title column
     
     @FXML
-    private TableColumn watchlistPlotColumn;
+    private TableColumn watchlistPlotColumn; //Watchlist plot column
     
     @FXML
-    private Button removeFromWatchlist;
+    private Button removeFromWatchlist; //Remove from watchlist button
     
     
     private String input;
@@ -106,7 +106,7 @@ public class Controller implements Initializable{
     public static final String VIEWMODE = "view_mode_key"; //Viewmode preference key
     
     
-    private ObservableList<Movies> watchlist = FXCollections.observableArrayList();
+    private ObservableList<Movies> watchlist = FXCollections.observableArrayList(); //Collection of movies to hold for watchlist
     
     
     
@@ -177,7 +177,10 @@ public class Controller implements Initializable{
    }
    
    
-   //Sort MenuItem action events
+   /**
+   *This method is usesd to sort the list of movies in alphabetical order, A-Z
+   *@param event This is the ActionEvent of the Sort A-Z button
+   */
    @FXML
    void sortAZ(ActionEvent event) {
    
@@ -190,6 +193,11 @@ public class Controller implements Initializable{
    void sortID(ActionEvent event) {
       return;
    }
+   
+   /**
+   *This method is usesd to sort the list of movies in reversed alphabetical order, Z-A
+   *@param event This is the ActionEvent of the Sort Z-A button
+   */
    @FXML
    void sortZA(ActionEvent event) {
       
@@ -198,21 +206,26 @@ public class Controller implements Initializable{
       resultsTable.setItems(movieResults);
    }
    
-   //Add to watchlist button handler
+   /**
+   *This method is usesd to add to the Watchlist Table and refrsh the table items with the new added movie selection
+   *@param event This is the ActionEvent of the addToWatchlistButton
+   */
    @FXML
-
    void addToWatchlist(ActionEvent event) {
          
       Movies selectedMovie = resultsTable.getSelectionModel().getSelectedItem();
       
+      //Check to make sure a movie is selected by the user
       if(selectedMovie != null) {
-      
+         
+         //Check to see if movie selected by user is already in the watchlist
          if(!watchlist.contains(selectedMovie)) {
          
             watchlist.add(selectedMovie);
             
             watchlistTable.setItems(watchlist);
             
+            //Set table column content and refresh table
             watchlistTitleColumn.setCellValueFactory(
                new PropertyValueFactory<Movies, String>("Title"));
             watchlistPlotColumn.setCellValueFactory(
@@ -226,6 +239,10 @@ public class Controller implements Initializable{
    
    }
    
+   /**
+   *This method is usesd to remove from the Watchlist Table and refresh the table items with the movie selection removed
+   *@param event This is the ActionEvent of the removeFromWatchlistButton
+   */
    @FXML 
    void removeFromWatchlist(ActionEvent event) {
       
@@ -238,7 +255,6 @@ public class Controller implements Initializable{
          watchlistTable.setItems(watchlist);
       
       }
-
    
    }
    
