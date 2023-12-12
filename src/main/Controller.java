@@ -80,6 +80,9 @@ public class Controller implements Initializable{
     private TableColumn plotColumn; //Search results plot column
     
     @FXML
+    private TableColumn yearColumn; //Seach results year column
+    
+    @FXML
     private Button viewToggle; //dark/light mode toggle
     
     @FXML
@@ -93,6 +96,9 @@ public class Controller implements Initializable{
     
     @FXML
     private TableColumn watchlistPlotColumn; //Watchlist plot column
+    
+    @FXML
+    private TableColumn watchlistYearColumn; //watchlist year column
     
     @FXML
     private Button removeFromWatchlist; //Remove from watchlist button
@@ -110,7 +116,7 @@ public class Controller implements Initializable{
     
     
     
-   /**Search Button action event calls Search.searchByTitle method and passes search results to the table columns
+   /**Search Button action event calls Search.searchByTitle/searchById method and passes search results to the table columns
    @param event: ActionEvent of button click
    **/ 
    @FXML
@@ -119,21 +125,20 @@ public class Controller implements Initializable{
       //Get text field input
       input = searchInput.getText();
       
-      
+      //Regex pattern matcher to find IMDB ID
       Pattern pattern = Pattern.compile("[t][t][0-9]");
       Matcher matcher = pattern.matcher(input);
       
       Movies searchResult = new Movies();
       boolean found = matcher.find();
       
+      //Call the proper search method given the input
       if(found)
       {
           searchResult = Search.searchById(input);
-          System.out.print("called");
       } else
       {
           searchResult = Search.searchByTitle(input);
-          System.out.print("not called");
       }
       
       //Call searchByTitle method and input data to searchResultObject
@@ -142,6 +147,8 @@ public class Controller implements Initializable{
          new PropertyValueFactory<Movies, String>("Title"));
       plotColumn.setCellValueFactory(
          new PropertyValueFactory<Movies, String>("Plot"));
+      yearColumn.setCellValueFactory(
+         new PropertyValueFactory<Movies, String>("Year"));
       resultsTable.setItems(movieResults);
       
       addToWatchlistButton.setDisable(false);
@@ -206,10 +213,6 @@ public class Controller implements Initializable{
   
    }
    
-   @FXML
-   void sortID(ActionEvent event) {
-      return;
-   }
    
    /**
    *This method is usesd to sort the list of movies in a selected tab in reversed alphabetical order, Z-A
@@ -263,6 +266,8 @@ public class Controller implements Initializable{
                new PropertyValueFactory<Movies, String>("Title"));
             watchlistPlotColumn.setCellValueFactory(
                new PropertyValueFactory<Movies, String>("Plot"));
+            watchlistYearColumn.setCellValueFactory(
+               new PropertyValueFactory<Movies, String>("Year"));
                
             watchlistTable.setItems(watchlist);
          
@@ -297,9 +302,11 @@ public class Controller implements Initializable{
    @Override
    public void initialize(URL location, ResourceBundle resources)
    {  
+      //Create preferences object to access user preferences
       Preferences p = Preferences.userNodeForPackage(Controller.class);
       this.mode = Mode.valueOf( p.get(VIEWMODE, Mode.LIGHTMODE.toString()));
       
+      //Determine what the user's view mode is and set styles
       if(this.mode == Mode.DARKMODE)
       {
          viewToggle.setText("Light Mode");

@@ -1,3 +1,15 @@
+/**
+Class name:    Search.java
+Author:        David Mendez
+               Lin Meawitz
+               Shalin Bhalala
+               
+Date:          12/11/2023
+
+Assignment:    Final Project
+
+Description:   Methods to call on the OMDBAPI and parse JSON data to create a movie object       
+**/
 import java.io.*;
 import java.util.Scanner;
 import java.net.URL;

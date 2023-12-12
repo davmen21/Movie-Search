@@ -8,7 +8,7 @@ Date:          12/11/2023
 
 Assignment:    Final Project
 
-Description:   The Movies class defines a movie with title, plot, and an imdbID        
+Description:   The Movies class defines a movie with title, plot, year nad imdbID     
 **/
 
 public class Movies {
@@ -17,6 +17,7 @@ public class Movies {
    private String Title;
    private String Plot;
    private String imdbID;
+   private String Year;
    
    /**Method getTitle: gets movie title
    @return Title; String value of movie title
@@ -40,6 +41,14 @@ public class Movies {
    public String getID()
    {
       return this.imdbID;
+   }
+      
+   /**Method getYear: gets the movie year release
+   @return Year: String value of movie year release
+   **/
+   public String getYear()
+   {
+      return this.Year;
    }
 
 
