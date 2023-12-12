@@ -68,11 +68,10 @@ public class Controller implements Initializable{
     private MenuItem idSort;
     
     @FXML
-<<<<<<< HEAD
-    private TableView resultsTable; //Search results table
-=======
+    //private TableView resultsTable; //Search results table
+
     private TableView<Movies> resultsTable;
->>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
+
     
     @FXML
     private TableColumn titleColumn; //Search results titles column
@@ -81,13 +80,12 @@ public class Controller implements Initializable{
     private TableColumn plotColumn; //Search results plot column
     
     @FXML
-<<<<<<< HEAD
     private Button viewToggle; //dark/light mode toggle
     
     @FXML
     private Button addToWatchlistButton; //Add to watchlist button
     
-=======
+    @FXML
     private TableView<Movies> watchlistTable;
     
     @FXML
@@ -95,13 +93,6 @@ public class Controller implements Initializable{
     
     @FXML
     private TableColumn watchlistPlotColumn;
-    
-    @FXML
-    private Button viewToggle;
->>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
-    
-    @FXML
-    private Button addToWatchlistButton;
     
     @FXML
     private Button removeFromWatchlist;
@@ -209,9 +200,7 @@ public class Controller implements Initializable{
    
    //Add to watchlist button handler
    @FXML
-<<<<<<< HEAD
-   void addToWatchlist(ActionEvent event){
-=======
+
    void addToWatchlist(ActionEvent event) {
          
       Movies selectedMovie = resultsTable.getSelectionModel().getSelectedItem();
@@ -249,7 +238,7 @@ public class Controller implements Initializable{
          watchlistTable.setItems(watchlist);
       
       }
->>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
+
    
    }
    

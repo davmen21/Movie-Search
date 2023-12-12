@@ -64,7 +64,7 @@
                               <TableColumn fx:id="plotColumn" prefWidth="75.0" text="Plot" />
                           </columns>
                         </TableView>
-                      <Button fx:id="addToWatchlistButton" text="Add to watchlist" onAction="#addToWatchlist" />
+                      <Button fx:id="addToWatchlistButton" onAction="#addToWatchlist" text="Add to watchlist" />
                      </VBox></content></Tab>
                 <Tab text="Watchlist">
                   <content>
@@ -75,15 +75,15 @@
                          <TableColumn fx:id="watchlistPlotColumn" prefWidth="75.0" text="Plot" />
                       </columns>
                      </TableView>
-                    <Button fx:id="removeFromWatchlistButton" text="Remove from watchlist" onAction="#removeFromWatchlist" />
+                    <Button fx:id="removeFromWatchlistButton" onAction="#removeFromWatchlist" text="Remove from watchlist" />
                    </VBox>
                   </content>
                 </Tab>
               </tabs>
             </TabPane>
-            <TextField fx:id="searchInput" layoutX="230.0" layoutY="95.0" promptText="Search" />
-            <Button fx:id="submit" layoutX="379.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleButton" text="Search" />
-            <MenuButton id="sortMenu" fx:id="sortId" layoutX="176.0" layoutY="95.0" mnemonicParsing="false" text="Sort">
+            <TextField fx:id="searchInput" layoutX="247.0" layoutY="78.0" promptText="Search" />
+            <Button fx:id="submit" layoutX="396.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleButton" text="Search" />
+            <MenuButton id="sortMenu" fx:id="sortId" layoutX="193.0" layoutY="78.0" mnemonicParsing="false" text="Sort">
               <items>
                 <MenuItem fx:id="azSort" mnemonicParsing="false" onAction="#sortAZ" text="A-Z" />
                 <MenuItem fx:id="zaSort" mnemonicParsing="false" onAction="#sortZA" text="Z-A" />
@@ -91,7 +91,6 @@
               </items>
             </MenuButton>
             <Button fx:id="viewToggle" layoutX="550.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeViewMode" text="Dark Mode" />
-            <Button fx:id="addToWatchlistButton" disable="true" layoutX="431.0" layoutY="95.0" mnemonicParsing="false" onAction="#addToWatchlist" text="Add to Watchlist" />
       </children>
     </AnchorPane>
   </children>
