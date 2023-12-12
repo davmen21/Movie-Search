@@ -1,3 +1,16 @@
+/**
+Class name:    Contoller.java
+Author:        David Mendez
+               Lin Meawitz
+               Shalin Bhalala
+               
+Date:          12/11/2023
+
+Assignment:    Final Project
+
+Description:   The Controller defines the methods of the FXML file       
+**/
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +32,7 @@ import java.util.prefs.Preferences;
 import java.util.ResourceBundle;
 import java.net.URL;
 import java.net.MalformedURLException;
+import java.util.regex.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,52 +40,85 @@ import com.google.gson.GsonBuilder;
 public class Controller implements Initializable{
 
     @FXML
-    private TextField searchInput;
-    private MenuButton sortId;
-    private Button submit;
-    private TabPane tabPane;
+    private TextField searchInput; //Search text field
     
     @FXML
-    private AnchorPane anchorPane;
+    private MenuButton sortId; //Sort menu button
     
     @FXML
-    private Tab resultsTab;
-    private MenuItem azSort;
+    private Button submit; //Submit search button
+    
+    @FXML
+    private TabPane tabPane; //Tab pane for search and watchlist results
+    
+    @FXML
+    private AnchorPane anchorPane;//Anchor pane 
+    
+    @FXML
+    private Tab resultsTab; //Search results tab
+    
+    @FXML
+    private MenuItem azSort; 
+    
+    @FXML
     private MenuItem zaSort;
+    
+    @FXML
     private MenuItem idSort;
     
     @FXML
-    private TableView resultsTable;
+    private TableView resultsTable; //Search results table
     
     @FXML
-    private TableColumn titleColumn;
+    private TableColumn titleColumn; //Search results titles column
     
     @FXML
-    private TableColumn plotColumn;
+    private TableColumn plotColumn; //Search results plot column
     
     @FXML
-    private Button viewToggle;
+    private Button viewToggle; //dark/light mode toggle
+    
+    @FXML
+    private Button addToWatchlistButton; //Add to watchlist button
+    
     
     private String input;
     private String sort;
-    private enum Mode {DARKMODE, LIGHTMODE};
-    private Mode mode;
-    public static final String VIEWMODE = "view_mode_key";
+    private String tempID; 
+    private enum Mode {DARKMODE, LIGHTMODE}; //Dark/Light mode enum
+    private Mode mode; 
+    public static final String VIEWMODE = "view_mode_key"; //Viewmode preference key
+    
     
     
     
    /**Search Button action event calls Search.searchByTitle method and passes search results to the table columns
    @param event: ActionEvent of button click
-   **/
-   
+   **/ 
    @FXML
    protected void handleButton(ActionEvent event) throws IOException
    {
       //Get text field input
       input = searchInput.getText();
       
+      
+      Pattern pattern = Pattern.compile("[t][t][0-9]");
+      Matcher matcher = pattern.matcher(input);
+      
+      Movies searchResult = new Movies();
+      boolean found = matcher.find();
+      
+      if(found)
+      {
+          searchResult = Search.searchById(input);
+          System.out.print("called");
+      } else
+      {
+          searchResult = Search.searchByTitle(input);
+          System.out.print("not called");
+      }
+      
       //Call searchByTitle method and input data to searchResultObject
-      Movies searchResult = Search.searchByTitle(input);
       ObservableList<Movies> movieResults = FXCollections.observableArrayList(searchResult);
       titleColumn.setCellValueFactory(
          new PropertyValueFactory<Movies, String>("Title"));
@@ -79,10 +126,14 @@ public class Controller implements Initializable{
          new PropertyValueFactory<Movies, String>("Plot"));
       resultsTable.setItems(movieResults);
       
+      addToWatchlistButton.setDisable(false);
+      tempID = searchResult.getID();
+      
    }
    
    /** Change view styling based on view mode selected and
    update user preferences for view mode
+   @param event: ActionEvent of dark mode / light mode button
    **/
    @FXML   
    protected void changeViewMode(ActionEvent event)
@@ -129,8 +180,6 @@ public class Controller implements Initializable{
    //Add to watchlist button handler
    @FXML
    void addToWatchlist(ActionEvent event){
-      
-      
    
    }
    
