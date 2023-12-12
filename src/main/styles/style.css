@@ -1,0 +1,22 @@
+#Button {
+    -fx-background-color: #103356;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+}
+#Button:hover {
+    -fx-background-color: 
+        radial-gradient(center 50% 50%, radius 100%, #87BEF0, #87BEF0);
+}
+#Button:pressed {
+    -fx-padding: 3 3 3 3;
+    -fx-background-insets: 1 0 1 0;
+}
+#Button Text {
+    -fx-fill: white;
+}
+
+#SearchBar {
+    -fx-border-color: #626262;
+    -fx-background-color: #ECF0F1;
+}
