@@ -30,6 +30,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.prefs.Preferences;
 import java.util.ResourceBundle;
+import java.util.Comparator;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.util.regex.*;
@@ -67,7 +68,11 @@ public class Controller implements Initializable{
     private MenuItem idSort;
     
     @FXML
+<<<<<<< HEAD
     private TableView resultsTable; //Search results table
+=======
+    private TableView<Movies> resultsTable;
+>>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
     
     @FXML
     private TableColumn titleColumn; //Search results titles column
@@ -76,10 +81,30 @@ public class Controller implements Initializable{
     private TableColumn plotColumn; //Search results plot column
     
     @FXML
+<<<<<<< HEAD
     private Button viewToggle; //dark/light mode toggle
     
     @FXML
     private Button addToWatchlistButton; //Add to watchlist button
+    
+=======
+    private TableView<Movies> watchlistTable;
+    
+    @FXML
+    private TableColumn watchlistTitleColumn;
+    
+    @FXML
+    private TableColumn watchlistPlotColumn;
+    
+    @FXML
+    private Button viewToggle;
+>>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
+    
+    @FXML
+    private Button addToWatchlistButton;
+    
+    @FXML
+    private Button removeFromWatchlist;
     
     
     private String input;
@@ -89,6 +114,8 @@ public class Controller implements Initializable{
     private Mode mode; 
     public static final String VIEWMODE = "view_mode_key"; //Viewmode preference key
     
+    
+    private ObservableList<Movies> watchlist = FXCollections.observableArrayList();
     
     
     
@@ -163,10 +190,10 @@ public class Controller implements Initializable{
    @FXML
    void sortAZ(ActionEvent event) {
    
-      //movies.sort(Comparator.comparing(Movie :: getTitle));
-      
-      //resultsTable.setItems(movies); 
-      return;
+      ObservableList<Movies> movieResults = resultsTable.getItems();
+      movieResults.sort(Comparator.comparing(Movies :: getTitle));
+      resultsTable.setItems(movieResults);
+  
    }
    @FXML
    void sortID(ActionEvent event) {
@@ -174,12 +201,55 @@ public class Controller implements Initializable{
    }
    @FXML
    void sortZA(ActionEvent event) {
-      return;
+      
+      ObservableList<Movies> movieResults = resultsTable.getItems();
+      movieResults.sort(Comparator.comparing(Movies :: getTitle).reversed());
+      resultsTable.setItems(movieResults);
    }
    
    //Add to watchlist button handler
    @FXML
+<<<<<<< HEAD
    void addToWatchlist(ActionEvent event){
+=======
+   void addToWatchlist(ActionEvent event) {
+         
+      Movies selectedMovie = resultsTable.getSelectionModel().getSelectedItem();
+      
+      if(selectedMovie != null) {
+      
+         if(!watchlist.contains(selectedMovie)) {
+         
+            watchlist.add(selectedMovie);
+            
+            watchlistTable.setItems(watchlist);
+            
+            watchlistTitleColumn.setCellValueFactory(
+               new PropertyValueFactory<Movies, String>("Title"));
+            watchlistPlotColumn.setCellValueFactory(
+               new PropertyValueFactory<Movies, String>("Plot"));
+               
+            watchlistTable.setItems(watchlist);
+         
+         }
+      
+      }
+   
+   }
+   
+   @FXML 
+   void removeFromWatchlist(ActionEvent event) {
+      
+      Movies selectedMovie = watchlistTable.getSelectionModel().getSelectedItem();
+      
+      if(selectedMovie != null) {
+      
+         watchlist.remove(selectedMovie);
+         
+         watchlistTable.setItems(watchlist);
+      
+      }
+>>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
    
    }
    

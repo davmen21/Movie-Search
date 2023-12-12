@@ -16,8 +16,11 @@ public class Movies {
    //Initialize attributes
    private String Title;
    private String Plot;
+<<<<<<< HEAD
    private String imdbID;
    private boolean inWatchlist;
+=======
+>>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
    
    /**Method getTitle: gets movie title
    @return Title; String value of movie title
@@ -34,6 +37,7 @@ public class Movies {
    {
       return this.Plot;
    }
+<<<<<<< HEAD
    
    /**Method getID: gets the movie Imdb ID
    @return imdbID: String value of imdb ID
@@ -48,5 +52,7 @@ public class Movies {
    {
       return this.inWatchlist;
    }
+=======
+>>>>>>> 687e3a422aedbfe7cd82cd78b6581553d70bdd9c
 
 }

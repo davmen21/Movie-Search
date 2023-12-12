@@ -57,17 +57,26 @@
             <TabPane fx:id="tabPane" layoutY="143.0" prefHeight="236.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="resultsTab" text="Search Results">
-                     <content>
+                     <content><VBox>
                         <TableView fx:id="resultsTable" prefHeight="200.0" prefWidth="200.0">
                           <columns>
                             <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
                               <TableColumn fx:id="plotColumn" prefWidth="75.0" text="Plot" />
                           </columns>
                         </TableView>
-                     </content></Tab>
+                      <Button fx:id="addToWatchlistButton" text="Add to watchlist" onAction="#addToWatchlist" />
+                     </VBox></content></Tab>
                 <Tab text="Watchlist">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   <VBox>
+                    <TableView fx:id="watchlistTable" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                       <TableColumn fx:id="watchlistTitleColumn" prefWidth="75.0" text="Title" />
+                         <TableColumn fx:id="watchlistPlotColumn" prefWidth="75.0" text="Plot" />
+                      </columns>
+                     </TableView>
+                    <Button fx:id="removeFromWatchlistButton" text="Remove from watchlist" onAction="#removeFromWatchlist" />
+                   </VBox>
                   </content>
                 </Tab>
               </tabs>
