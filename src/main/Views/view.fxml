@@ -83,10 +83,10 @@
             </TabPane>
             <TextField fx:id="searchInput" layoutX="247.0" layoutY="78.0" promptText="Search" />
             <Button fx:id="submit" layoutX="396.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleButton" text="Search" />
+            <Button fx:id="azSort" onAction="#sortAZ" text="Sort A-Z" />
+            <Button fx:id="zaSort" layoutX="60" onAction="#sortZA" text="Sort Z-A" />
             <MenuButton id="sortMenu" fx:id="sortId" layoutX="193.0" layoutY="78.0" mnemonicParsing="false" text="Sort">
               <items>
-                <MenuItem fx:id="azSort" mnemonicParsing="false" onAction="#sortAZ" text="A-Z" />
-                <MenuItem fx:id="zaSort" mnemonicParsing="false" onAction="#sortZA" text="Z-A" />
                 <MenuItem fx:id="idSort" mnemonicParsing="false" onAction="#sortID" text="By ID" />
               </items>
             </MenuButton>

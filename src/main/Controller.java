@@ -59,10 +59,10 @@ public class Controller implements Initializable{
     private Tab resultsTab; //Search results tab
     
     @FXML
-    private MenuItem azSort; 
+    private Button azSort; //Button to sort A-Z
     
     @FXML
-    private MenuItem zaSort;
+    private Button zaSort; //Button to sort Z-A
     
     @FXML
     private MenuItem idSort;
@@ -178,32 +178,65 @@ public class Controller implements Initializable{
    
    
    /**
-   *This method is usesd to sort the list of movies in alphabetical order, A-Z
+   *This method is usesd to sort the list of movies in a selected tab in alphabetical order, A-Z
    *@param event This is the ActionEvent of the Sort A-Z button
    */
    @FXML
    void sortAZ(ActionEvent event) {
    
-      ObservableList<Movies> movieResults = resultsTable.getItems();
-      movieResults.sort(Comparator.comparing(Movies :: getTitle));
-      resultsTable.setItems(movieResults);
+      Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+      
+      if(selectedTab != null) {
+      
+         if(selectedTab.getText().equals("Search Results")) {
+         
+            ObservableList<Movies> movieResults = resultsTable.getItems();
+            movieResults.sort(Comparator.comparing(Movies :: getTitle, String.CASE_INSENSITIVE_ORDER));
+            resultsTable.setItems(movieResults);
+         
+         } else if (selectedTab.getText().equals("Watchlist")) {
+         
+            ObservableList<Movies> movieResults = watchlistTable.getItems();
+            movieResults.sort(Comparator.comparing(Movies :: getTitle, String.CASE_INSENSITIVE_ORDER));
+            watchlistTable.setItems(movieResults);
+         
+         }
+         
+      }
   
    }
+   
    @FXML
    void sortID(ActionEvent event) {
       return;
    }
    
    /**
-   *This method is usesd to sort the list of movies in reversed alphabetical order, Z-A
+   *This method is usesd to sort the list of movies in a selected tab in reversed alphabetical order, Z-A
    *@param event This is the ActionEvent of the Sort Z-A button
    */
    @FXML
    void sortZA(ActionEvent event) {
       
-      ObservableList<Movies> movieResults = resultsTable.getItems();
-      movieResults.sort(Comparator.comparing(Movies :: getTitle).reversed());
-      resultsTable.setItems(movieResults);
+      Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+      
+      if(selectedTab != null) {
+      
+         if(selectedTab.getText().equals("Search Results")) {
+         
+            ObservableList<Movies> movieResults = resultsTable.getItems();
+            movieResults.sort(Comparator.comparing(Movies :: getTitle, String.CASE_INSENSITIVE_ORDER).reversed());
+            resultsTable.setItems(movieResults);
+         
+         } else if (selectedTab.getText().equals("Watchlist")) {
+         
+            ObservableList<Movies> movieResults = watchlistTable.getItems();
+            movieResults.sort(Comparator.comparing(Movies :: getTitle, String.CASE_INSENSITIVE_ORDER).reversed());
+            watchlistTable.setItems(movieResults);
+         
+         }
+         
+      }
    }
    
    /**
