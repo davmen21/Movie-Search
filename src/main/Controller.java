@@ -17,6 +17,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.prefs.Preferences;
 import java.util.ResourceBundle;
+import java.util.Comparator;
 import java.net.URL;
 import java.net.MalformedURLException;
 
@@ -41,7 +42,7 @@ public class Controller implements Initializable{
     private MenuItem idSort;
     
     @FXML
-    private TableView resultsTable;
+    private TableView<Movies> resultsTable;
     
     @FXML
     private TableColumn titleColumn;
@@ -50,13 +51,27 @@ public class Controller implements Initializable{
     private TableColumn plotColumn;
     
     @FXML
+    private TableView<Movies> watchlistTable;
+    
+    @FXML
+    private TableColumn watchlistTitleColumn;
+    
+    @FXML
+    private TableColumn watchlistPlotColumn;
+    
+    @FXML
     private Button viewToggle;
+    
+    @FXML
+    private Button addToWatchlistButton;
     
     private String input;
     private String sort;
     private enum Mode {DARKMODE, LIGHTMODE};
     private Mode mode;
     public static final String VIEWMODE = "view_mode_key";
+    
+    private ObservableList<Movies> watchlist = FXCollections.observableArrayList();
     
     
     
@@ -112,10 +127,10 @@ public class Controller implements Initializable{
    @FXML
    void sortAZ(ActionEvent event) {
    
-      //movies.sort(Comparator.comparing(Movie :: getTitle));
-      
-      //resultsTable.setItems(movies); 
-      return;
+      ObservableList<Movies> movieResults = resultsTable.getItems();
+      movieResults.sort(Comparator.comparing(Movies :: getTitle));
+      resultsTable.setItems(movieResults);
+  
    }
    @FXML
    void sortID(ActionEvent event) {
@@ -123,14 +138,36 @@ public class Controller implements Initializable{
    }
    @FXML
    void sortZA(ActionEvent event) {
-      return;
+      
+      ObservableList<Movies> movieResults = resultsTable.getItems();
+      movieResults.sort(Comparator.comparing(Movies :: getTitle).reversed());
+      resultsTable.setItems(movieResults);
    }
    
    //Add to watchlist button handler
    @FXML
    void addToWatchlist(ActionEvent event){
+         
+      Movies selectedMovie = resultsTable.getSelectionModel().getSelectedItem();
       
+      if(selectedMovie != null) {
       
+         if(!watchlist.contains(selectedMovie)) {
+         
+            watchlist.add(selectedMovie);
+            
+            watchlistTable.setItems(watchlist);
+            
+            watchlistTitleColumn.setCellValueFactory(
+               new PropertyValueFactory<Movies, String>("Title"));
+            watchlistPlotColumn.setCellValueFactory(
+               new PropertyValueFactory<Movies, String>("Plot"));
+               
+            watchlistTable.setItems(watchlist);
+         
+         }
+      
+      }
    
    }
    

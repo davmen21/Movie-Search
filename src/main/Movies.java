@@ -5,7 +5,6 @@ public class Movies {
 
    private String Title;
    private String Plot;
-   private boolean inWatchlist;
    
    public String getTitle()
    {
@@ -15,10 +14,6 @@ public class Movies {
    public String getPlot()
    {
       return this.Plot;
-   }
-   public String getInWatchlist()
-   {
-      return this.inWatchlist;
    }
 
 }

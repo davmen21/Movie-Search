@@ -67,7 +67,12 @@
                      </content></Tab>
                 <Tab text="Watchlist">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <TableView fx:id="watchlistTable" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                       <TableColumn fx:id="watchlistTitleColumn" prefWidth="75.0" text="Title" />
+                         <TableColumn fx:id="watchlistPlotColumn" prefWidth="75.0" text="Plot" />
+                      </columns>
+                    </TableView>
                   </content>
                 </Tab>
                   <Tab text="Top 10">
@@ -87,6 +92,7 @@
               </items>
             </MenuButton>
             <Button fx:id="viewToggle" layoutX="550.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeViewMode" text="Dark Mode" />
+            <Button fx:id="addToWatchlistButton" text="Add to watchlist" onAction="#addToWatchlist" />
       </children>
     </AnchorPane>
   </children>
