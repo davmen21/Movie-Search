@@ -65,6 +65,10 @@ public class Controller implements Initializable{
     @FXML
     private Button addToWatchlistButton;
     
+    @FXML
+    private Button removeFromWatchlist;
+    
+    
     private String input;
     private String sort;
     private enum Mode {DARKMODE, LIGHTMODE};
@@ -146,7 +150,7 @@ public class Controller implements Initializable{
    
    //Add to watchlist button handler
    @FXML
-   void addToWatchlist(ActionEvent event){
+   void addToWatchlist(ActionEvent event) {
          
       Movies selectedMovie = resultsTable.getSelectionModel().getSelectedItem();
       
@@ -166,6 +170,21 @@ public class Controller implements Initializable{
             watchlistTable.setItems(watchlist);
          
          }
+      
+      }
+   
+   }
+   
+   @FXML 
+   void removeFromWatchlist(ActionEvent event) {
+      
+      Movies selectedMovie = watchlistTable.getSelectionModel().getSelectedItem();
+      
+      if(selectedMovie != null) {
+      
+         watchlist.remove(selectedMovie);
+         
+         watchlistTable.setItems(watchlist);
       
       }
    
