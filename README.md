@@ -1,7 +1,9 @@
 # Movie-Search
 CIS111B Movie Search Final Project
+
 **The Movie Search App allows users to search for a movie and add the movie to a watchlist
 for later viewing.**
+
 USAGE
 - Enter a movie title or IMDB ID in the search box
 - Click the search button
