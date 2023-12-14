@@ -1,7 +1,6 @@
 /**
 Class name:    Search.java
 Author:        David Mendez
-               Lin Meawitz
                Shalin Bhalala
                
 Date:          12/11/2023
